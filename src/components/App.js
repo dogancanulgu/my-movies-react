@@ -1,5 +1,5 @@
 import React from 'react'
-// import SearchBar from "./SearchBar"
+import SearchBar from "./SearchBar"
 import MovieList from "./MovieList"
 
 class App extends React.Component {
@@ -41,15 +41,21 @@ class App extends React.Component {
                 "overview": "When a mafia accountant is taken hostage on his beat, a police officer – wracked by guilt from a prior stint as a negotiator – must negotiate the standoff, even as his own family is held captive by the mob.",
                 "id": 13
             }
-        ]
+        ],
+
+        searchQuery: ""
     }
 
     deleteMovie = (movie) => {
         const newMovieList = this.state.movies.filter(m => m.id !== movie.id);
 
-        this.setState({
+        // this.setState({
+        //     movies: newMovieList
+        // })
+     
+        this.setState(state=>({
             movies: newMovieList
-        })
+        }))
     }
 
 
@@ -58,7 +64,7 @@ class App extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12">
-                        {/* <SearchBar /> */}
+                        <SearchBar searchMovieProp={this.searchMovie} />
                     </div>
                 </div>
                 <MovieList
